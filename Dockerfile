@@ -16,6 +16,6 @@ WORKDIR /app
 
 RUN npm install -g serve
 
-COPY --from=builder /app/dist ./dist
+COPY --from=builder ./dist ./dist
 
 CMD ["serve", "-s", "dist", "-l", "3002"]
