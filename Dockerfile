@@ -1,15 +1,17 @@
-# Stage 1: Install dependencies and build the application
+#building
 FROM node:14 AS builder
 
 WORKDIR /app
 
 COPY package*.json ./
+
 RUN npm install
 
 COPY . .
+
 RUN npm run build  
 
-# Stage 2: Serve the application
+#serving
 FROM node:14
 
 WORKDIR /app
