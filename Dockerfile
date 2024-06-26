@@ -1,24 +1,21 @@
-# Use official Node.js image as the base
-FROM node:latest
+# Stage 1: Install dependencies
+FROM node:14 AS builder
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Install dependencies
-COPY package.json yarn.lock /app/
-RUN yarn install
+COPY package*.json ./
+RUN npm install --force
 
-# Copy the rest of the application code
 COPY . .
+RUN npm run build
 
-# Build the React app
-RUN yarn build
+# Stage 2: Serve the application
+FROM node:14
 
-# Install serve globally to serve the production build
-RUN yarn global add serve
+WORKDIR /app
 
-# Expose the port for the application (Vite's default is 3000)
-EXPOSE 3002
+RUN npm install -g serve
 
-# Serve the app with serve
-CMD ["serve", "-s", "build", "-l", "3002"]
+COPY --from=builder /app/dist ./dist
+
+CMD ["serve", "-s", "dist", "-l", "3002"]
