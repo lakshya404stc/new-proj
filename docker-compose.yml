@@ -3,4 +3,4 @@ services:
   ar-frontend:
     build: ./
     ports:
-      - "3002:3002"
+      - "5424:5424"

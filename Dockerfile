@@ -20,4 +20,4 @@ RUN npm install -g serve
 
 COPY --from=builder /app/dist ./dist
 
-CMD ["serve", "-s", "dist", "-l", "3002"]
+CMD ["serve", "-s", "dist", "-l", "5424"]
