@@ -88,7 +88,7 @@ const App = () => {
           </div>
 
           <div className="lg:w-[50vw] w-full relative">
-            <img src="./meshRight.png" className="w-full object-cover" />
+            <img src="./meshRight.png" className="w-full object-cover transform -scale-x-100" />
             <div className="lg:gap-7 absolute top-0 w-full h-full flex flex-col items-center lg:items-end lg:pe-[100px] justify-center z-[99] gap-2 py-[50px]">
               <div className="text-2xl md:text-4xl font-bold">Lorem ipsum </div>
               <div className="text-md md:text-xl lg:text-right font-base max-w-full text-center lg:px-0 px-5">
